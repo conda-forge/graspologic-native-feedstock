@@ -1,19 +1,19 @@
 {% set name = "graspologic-native" %}
-{% set version = "1.2.1" %}
+{% set version = "1.2.2" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/graspologic_native-{{ version }}.tar.gz
-  sha256: 72b7586028a91e9fef9af0ef314d368f0240c18dca99e6e6c546334359a8610a
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/graspologic_native-{{ version }}.tar.gz
+  sha256: c290b242f3c5a580acaabbd607322d05158c945897bd1db79fa9ddfc4f714e18
 
 build:
   script:
     - cargo bundle-licenses --format yaml --output THIRDPARTY.yml
     - {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   build:
@@ -22,6 +22,7 @@ requirements:
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - maturin >=1.4,<2.0                     # [build_platform != target_platform]
     - {{ compiler("c") }}
+    - {{ stdlib("c") }}
     - {{ compiler("rust") }}
   host:
     - pip
@@ -29,7 +30,6 @@ requirements:
     - maturin >=1.4,<2.0
   run:
     - python
-    -  __osx >={{ MACOSX_DEPLOYMENT_TARGET | default("11.0") }}  # [osx and x86_64]
 
 test:
   imports:
