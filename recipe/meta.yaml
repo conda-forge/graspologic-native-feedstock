@@ -1,5 +1,5 @@
 {% set name = "graspologic-native" %}
-{% set version = "1.2.3" %}
+{% set version = "1.2.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/graspologic_native-{{ version }}.tar.gz
-  sha256: 7c059f7b580248abc3fee8828b9e97ac48ac9a9554fdeafaa35862871ac5113a
+  sha256: 542dc1bd304c63c729d18cfd88b164b5e398d7df4d86153ef2b448b2007fb99c
 
 build:
   script:
