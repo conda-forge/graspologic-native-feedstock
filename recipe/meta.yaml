@@ -30,6 +30,9 @@ requirements:
     - maturin >=1.4,<2.0
   run:
     - python
+    # Reference: https://github.com/graspologic-org/graspologic-native/blob/v1.3.1/packages/pyo3/pyproject.toml#L11-L14
+    - numpy >=1.24
+    - scipy >=1.10
 
 test:
   imports:
